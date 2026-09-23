@@ -57,4 +57,12 @@
 
 - เลขคิวควรรีเซ็ตทุกวันหรือไหลต่อเนื่องตลอดทั้งปี (Q-02)
 
+## 2026-09-23 07:59:41 คำสั่ง: /tasks specs/001-booking/spec.md
+
+- เครื่องมือ: Copilot ใน Codespaces
+- ไฟล์: specs/001-booking/spec.md (v2), specs/001-booking/plan.md
+- ผลลัพธ์: สร้าง specs/001-booking/tasks.md จำนวน 16 tasks โดยมี 1 task รอคำตอบ Q-02
+- ครอบคลุม AC-BKG-01 ถึง AC-BKG-06 และ Constraint CON-TECH-01, DOM-PDPA-01, IF-IDP-01, IF-HIS-01, IF-NOT-01 ในตารางตรวจความครบ
+- ยังไม่เริ่มทำ task หรือเขียนโค้ด
+
 ---
