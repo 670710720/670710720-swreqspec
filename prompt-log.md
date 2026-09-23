@@ -65,4 +65,11 @@
 - ครอบคลุม AC-BKG-01 ถึง AC-BKG-06 และ Constraint CON-TECH-01, DOM-PDPA-01, IF-IDP-01, IF-HIS-01, IF-NOT-01 ในตารางตรวจความครบ
 - ยังไม่เริ่มทำ task หรือเขียนโค้ด
 
+## 2026-09-23 08:13:38 คำสั่ง: /implement T-01 specs/001-booking/tasks.md
+
+- ไฟล์ที่สร้าง: `backend/app/db/models.py`, `backend/app/db/session.py`, `backend/app/db/migrations/001_init.py`, `backend/tests/conftest.py`, `backend/tests/test_T01_database.py`
+- ผลลัพธ์: สร้างโมเดลและ migration ของ `slots`, `bookings` และ `audit_logs` โดย `bookings` ไม่มี `national_id`
+- ผล test: `cd backend && pytest tests/test_T01_database.py` ผ่าน 1 test
+- สิ่งที่เกือบต้องเดา: รูปแบบหมายเลขคิวและค่าเริ่มต้นของ queue ถูกเว้นไว้ตาม Q-02 ไม่ได้กำหนดใน T-01
+
 ---
