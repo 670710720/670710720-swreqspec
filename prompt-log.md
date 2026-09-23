@@ -72,4 +72,12 @@
 - ผล test: `cd backend && pytest tests/test_T01_database.py` ผ่าน 1 test
 - สิ่งที่เกือบต้องเดา: รูปแบบหมายเลขคิวและค่าเริ่มต้นของ queue ถูกเว้นไว้ตาม Q-02 ไม่ได้กำหนดใน T-01
 
+## 2026-09-23 08:28:19 คำสั่ง: /implement T-11 specs/001-booking/tasks.md
+
+- ไฟล์ที่สร้างหรือแก้: `frontend/src/pages/SlotPicker.jsx`, `frontend/src/App.jsx`, `frontend/src/__tests__/SlotPicker.test.jsx`
+- `frontend/src/api/client.js` ตรวจแล้วว่า API จำลอง/จริงตามสัญญา `GET /slots` มีอยู่เดิม จึงไม่ต้องแก้
+- ผลลัพธ์: สร้างหน้าจอเลือกแพ็กเกจและช่วงเวลา พร้อมโหลดข้อมูลจาก API จำลองและโหลดใหม่เมื่อเปลี่ยนแพ็กเกจ
+- ผล test: `cd frontend && npm test -- --run src/__tests__/SlotPicker.test.jsx` ผ่าน 1 test
+- สิ่งที่เกือบต้องเดา: รูปแบบข้อมูล response รองรับทั้ง `{ slots: [...] }` และ array ตามสัญญา API ที่ plan ระบุรายการช่วงเวลา จึงไม่ได้เพิ่มฟิลด์นอกสัญญา
+
 ---
