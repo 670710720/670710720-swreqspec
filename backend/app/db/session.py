@@ -1,18 +1,17 @@
-import os
-
+# สร้าง engine และ session ของฐานข้อมูล (CON-TECH-01)
 from sqlalchemy import create_engine
-from sqlalchemy.orm import Session, sessionmaker
+from sqlalchemy.orm import sessionmaker
+
+from app.config import DATABASE_URL
+
+engine = create_engine(DATABASE_URL)
+SessionLocal = sessionmaker(bind=engine, autoflush=False)
 
 
-def get_database_url() -> str:
-    """อ่าน URL ฐานข้อมูลตาม CON-TECH-01 โดยไม่ฝังค่า credential ในโค้ด"""
-    return os.getenv("DATABASE_URL", "postgresql+psycopg://localhost/booking")
-
-
-def create_database_engine(database_url: str | None = None):
-    """สร้าง engine สำหรับ PostgreSQL จริงหรือฐานข้อมูลทดสอบตาม CON-TECH-01"""
-    return create_engine(database_url or get_database_url(), future=True)
-
-
-engine = create_database_engine()
-SessionLocal = sessionmaker(bind=engine, class_=Session, expire_on_commit=False)
+def get_db():
+    """ส่ง session ให้ API แต่ละตัว แล้วปิดเมื่อจบ"""
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()

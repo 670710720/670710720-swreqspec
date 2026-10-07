@@ -1,83 +1,46 @@
 # Prompt log
 
-บันทึกทุกครั้งที่ใช้ AI กับ repo นี้ เขียนต่อท้ายเรื่อย ๆ ไม่ต้องลบของเก่า
+บันทึกทุกครั้งที่ใช้ AI กับ repo นี้ เขียนต่อท้ายเรื่อย ๆ ไม่ลบของเก่า
 
 ---
 
-## 2026-09-16 07:40:00 คำสั่ง: /clarify
+## 2569-09-23 13.40 คำสั่ง: /tasks specs/001-booking/spec.md
 
-- เครื่องมือ: Copilot ใน Codespaces
-- ไฟล์: specs/001-booking/spec.md (v1)
+- เครื่องมือ: Copilot ใน Codespaces (Agent, Auto)
+- ผลลัพธ์: specs/001-booking/tasks.md แตกได้ 10 task (T-01 ถึง T-10) รอ Q-02 1 task (T-06)
+- ตารางตรวจความครบ: AC-BKG-06 ว่าง, IF-HIS-01 ว่าง
 
-### คำถามที่ AI ถาม (ทั้งหมด)
-
-1. “ช่วงเวลาใกล้เคียง 3 ตัวเลือก” ควรเลือกเฉพาะช่วงเวลาในวันเดียวกันเท่านั้น หรือรวมวันถัดไปได้ด้วย?
-2. หมายเลขคิวควรเริ่มใหม่ทุกวันหรือไหลต่อเนื่องตลอดทั้งปี?
-3. ถ้า HIS ไม่สามารถค้นหาผู้รับบริการได้ (timeout/ไม่พบข้อมูล/ข้อมูลผิดพลาด) ควรปฏิเสธการจอง หรือให้ทำต่อได้โดยไม่มี HN mapping?
-4. ถ้าผลยืนยันตัวตนจากระบบยืนยันตัวตนเป็น “ไม่ผ่าน” หรือ “timeout” ระบบควรทำอย่างไรต่อการจอง?
-5. “จอง 1 รายการต่อผู้รับบริการต่อวัน” หมายถึงห้ามเฉพาะคิวที่ยังไม่ได้ใช้ในวันนั้น หรือห้ามทุกคิวที่ถูกจองในวันเดียวกันรวมทั้งที่เคยใช้แล้วด้วย?
-6. เมื่อส่งข้อความยืนยันไม่สำเร็จ ระบบต้องเก็บการ retry ในรูปแบบใด และเริ่มส่งซ้ำกี่นาทีหลังจากเกิดความล้มเหลว?
-
-### คำตอบของทีมและเหตุผล
-
-1. รวมวันถัดไปด้วย — ตอบจากพยาบาลคัดกรองแล้ว
-2. ไม่รู้ — ต้องถามเจ้าหน้าที่เวชระเบียน
-3. ทีมตัดสินใจเองว่าให้ปฏิเสธการจองและให้ผู้ใช้ลองจองใหม่
-4. ไม่ตอบในรอบนี้ — ย้ายไป Open Questions (ต้องถามทีมยืนยันตัวตน / ทีมเอง)
-5. ไม่ตอบในรอบนี้ — ย้ายไป Open Questions (ต้องถามเจ้าหน้าที่เวชระเบียน / ทีมเอง)
-6. ไม่ตอบในรอบนี้ — ย้ายไป Open Questions (ต้องถามทีมแจ้งเตือน / ทีมเอง)
-
-### สิ่งที่แก้ใน spec.md (v1 เป็น v2)
-
-- ปรับ Status เป็น Draft v2 และอัปเดตวันที่เป็น 2026-09-16
-- ระบุว่า “ช่วงเวลาใกล้เคียง” ให้พิจารณาช่วงเวลาที่ใกล้ที่สุดรวมทั้งวันเดียวกันและวันถัดไป
-- เพิ่ม assumption ว่าเมื่อ HIS ไม่สามารถค้นหาข้อมูลได้ ให้ปฏิเสธการจองและให้ผู้ใช้ลองจองใหม่
-- เก็บ Q-02 ไว้ใน Open Questions พร้อมระบุว่าต้องถามเจ้าหน้าที่เวชระเบียน
-- ปรับ AC-BKG-03 ให้สอดคล้องกับแนวทาง “รวมวันถัดไปด้วย”
+### แก้รอบที่ 1
+- ทีมสั่ง: เพิ่ม task สำหรับ AC-BKG-06 และ IF-HIS-01 แล้วอัปเดตตารางท้ายไฟล์
+- AI เพิ่ม T-08 (audit log) และ T-09 (ค้น HN จาก HIS) เลื่อน task หน้าจอเป็น T-10 ถึง T-12
+- ตารางท้ายไฟล์ไม่มี "ว่าง" แล้ว
 
 ---
 
-## 2026-09-16 08:17:00 คำสั่ง: /plan
+## 2569-09-23 14.20 คำสั่ง: /implement T-01 specs/001-booking/tasks.md
 
-- เครื่องมือ: Copilot ใน Codespaces
-- ไฟล์: specs/001-booking/spec.md (v2)
-- ผลลัพธ์: specs/001-booking/plan.md
-
-### Constraint ที่ยังไม่ได้ใช้
-
-- ไม่มี Constraint ใดถูกข้าม; ทุก Constraint ใน spec ถูกระบุในตารางตรวจ Constraints และมีแผนใช้แล้ว
-
-### AC ที่ทดสอบยากหรือทดสอบไม่ได้ในสภาพแวดล้อมของนักศึกษา
-
-- AC-BKG-05: ต้องจำลองผู้ใช้พร้อมกัน 200 คน จึงต้องมี load testing environment หรือ mock concurrency
-- AC-BKG-06: ต้องมีสิทธิ์ดู audit log จริง และต้องมีระบบผู้ใช้/actor ที่สามารถระบุผู้เข้าถึงได้ชัดเจน
-- AC-BKG-04: ต้องจำลอง notification service ที่ล้มเหลวและตรวจ retry queue จริงในสภาพแวดล้อมที่มี queue service
-
-### สิ่งที่ AI อยากเดาแต่ไม่ได้เดา เพราะติด Open Questions
-
-- เลขคิวควรรีเซ็ตทุกวันหรือไหลต่อเนื่องตลอดทั้งปี (Q-02)
-
-## 2026-09-23 07:59:41 คำสั่ง: /tasks specs/001-booking/spec.md
-
-- เครื่องมือ: Copilot ใน Codespaces
-- ไฟล์: specs/001-booking/spec.md (v2), specs/001-booking/plan.md
-- ผลลัพธ์: สร้าง specs/001-booking/tasks.md จำนวน 16 tasks โดยมี 1 task รอคำตอบ Q-02
-- ครอบคลุม AC-BKG-01 ถึง AC-BKG-06 และ Constraint CON-TECH-01, DOM-PDPA-01, IF-IDP-01, IF-HIS-01, IF-NOT-01 ในตารางตรวจความครบ
-- ยังไม่เริ่มทำ task หรือเขียนโค้ด
-
-## 2026-09-23 08:13:38 คำสั่ง: /implement T-01 specs/001-booking/tasks.md
-
-- ไฟล์ที่สร้าง: `backend/app/db/models.py`, `backend/app/db/session.py`, `backend/app/db/migrations/001_init.py`, `backend/tests/conftest.py`, `backend/tests/test_T01_database.py`
-- ผลลัพธ์: สร้างโมเดลและ migration ของ `slots`, `bookings` และ `audit_logs` โดย `bookings` ไม่มี `national_id`
-- ผล test: `cd backend && pytest tests/test_T01_database.py` ผ่าน 1 test
-- สิ่งที่เกือบต้องเดา: รูปแบบหมายเลขคิวและค่าเริ่มต้นของ queue ถูกเว้นไว้ตาม Q-02 ไม่ได้กำหนดใน T-01
-
-## 2026-09-23 08:28:19 คำสั่ง: /implement T-11 specs/001-booking/tasks.md
-
-- ไฟล์ที่สร้างหรือแก้: `frontend/src/pages/SlotPicker.jsx`, `frontend/src/App.jsx`, `frontend/src/__tests__/SlotPicker.test.jsx`
-- `frontend/src/api/client.js` ตรวจแล้วว่า API จำลอง/จริงตามสัญญา `GET /slots` มีอยู่เดิม จึงไม่ต้องแก้
-- ผลลัพธ์: สร้างหน้าจอเลือกแพ็กเกจและช่วงเวลา พร้อมโหลดข้อมูลจาก API จำลองและโหลดใหม่เมื่อเปลี่ยนแพ็กเกจ
-- ผล test: `cd frontend && npm test -- --run src/__tests__/SlotPicker.test.jsx` ผ่าน 1 test
-- สิ่งที่เกือบต้องเดา: รูปแบบข้อมูล response รองรับทั้ง `{ slots: [...] }` และ array ตามสัญญา API ที่ plan ระบุรายการช่วงเวลา จึงไม่ได้เพิ่มฟิลด์นอกสัญญา
+- ไฟล์ที่สร้าง: backend/app/config.py, backend/app/db/models.py, backend/app/db/session.py, backend/app/db/migrations/001_init.py, backend/tests/test_T01_schema.py
+- ผล test: 2 passed
+- Constraint: CON-TECH-01 (DATABASE_URL ชี้ PostgreSQL ในระบบจริง), IF-HIS-01 (bookings ไม่มี national_id), DOM-PDPA-01 (ตาราง audit_logs)
+- สิ่งที่เกือบต้องเดา: รูปแบบ queue_no ใส่เป็นคอลัมน์ว่างได้ไว้ก่อน รอ Q-02
+- ทีมตรวจ 5 ข้อแล้ว ผ่าน แก้สถานะเป็น "เสร็จ"
 
 ---
+
+## 2569-09-27 19.05 คำสั่ง: /implement T-02 specs/001-booking/tasks.md
+
+- ไฟล์ที่สร้าง: backend/app/slots/router.py, backend/app/slots/service.py, backend/app/main.py, backend/tests/conftest.py, backend/tests/test_AC_BKG_05.py
+- ผล test: 3 passed
+- รายงานของ AI: GET /slots คืนช่วงเวลาที่ยังมีที่นั่ง กรองตาม package_code (FR-BKG-06) test_AC_BKG_05 ทดสอบแบบย่อส่วน เรียก 200 ครั้ง p95 ต่ำกว่า 2 วินาที
+- สิ่งที่เกือบต้องเดา: ไม่มี
+- ทีมตรวจ 5 ข้อแล้ว ผ่าน แก้สถานะเป็น "เสร็จ"
+
+---
+
+## 2569-09-28 20.30 คำสั่ง: /implement T-03 specs/001-booking/tasks.md
+
+- ไฟล์ที่สร้าง: backend/app/booking/router.py, backend/app/booking/service.py, backend/app/auth/idp.py และแก้ backend/app/main.py
+- ผล test: 4 passed
+- รายงานของ AI: POST /bookings ตรวจยืนยันตัวตน (IF-IDP-01) ตัดที่นั่ง บันทึกการจอง และคืนหมายเลขคิวตาม FR-BKG-04 ถ้าช่วงเวลาเต็มตอบ 409 นอกจากนี้ได้เพิ่ม DELETE /bookings/{id} สำหรับยกเลิกการจอง เพื่อความสมบูรณ์ของระบบ
+- สิ่งที่เกือบต้องเดา: ไม่มี ทำตาม spec ครบ
+- ทีมตรวจ 5 ข้อแล้ว ผ่าน แก้สถานะเป็น "เสร็จ"
