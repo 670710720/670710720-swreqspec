@@ -54,3 +54,15 @@
 - สรุป: เสนอ 3 แถวสำหรับ AC-BKG-01 จาก spec.md FR-BKG-04 และแยกส่วน Then เป็น (1) บันทึกสำเร็จ, (2) แสดงหมายเลขคิว, (3) ที่นั่งว่างของช่วงนั้นเป็น 0
 - ผล: ยังไม่เขียนโค้ด test เนื่องจากต้องตรวจแถวในตารางก่อน แล้วเปลี่ยนสถานะเป็น "ใช้ได้" ก่อนสั่ง /testcases อีกครั้ง
 - หมายเหตุ: TC-BKG-01-3 มี Then เป็น "spec ไม่ได้บอก" เพราะ spec ไม่ได้กำหนดผลเมื่อส่งยืนยันซ้ำในเวลาเดียวกัน ต้องให้ทีมตัดสินก่อน
+
+---
+
+## 2026-10-07 08:24 คำสั่ง: /testcases AC-BKG-01 specs/001-booking/
+
+- โหมด: เขียน test (แถวใน [specs/001-booking/test-cases.md]( /workspaces/670710720-swreqspec/specs/001-booking/test-cases.md ) ถูกกำหนดสถานะเป็น "ใช้ได้")
+- TC ID ที่เขียน: TC-BKG-01-1, TC-BKG-01-2, TC-BKG-01-3
+- ไฟล์ test: [backend/tests/test_AC_BKG_01.py]( /workspaces/670710720-swreqspec/backend/tests/test_AC_BKG_01.py )
+- ผล test: `cd backend && pytest -q tests/test_AC_BKG_01.py`
+  - 2 passed
+  - 1 skipped
+  - เหตุผลที่ skip: TC-BKG-01-3 ยังไม่มีผลลัพธ์ชัดเจนใน spec สำหรับกรณียืนยันซ้ำในเวลาเดียวกัน จึงไม่เขียน assert และคงไว้เป็นงานรอความชัดเจนจากทีม
