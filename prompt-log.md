@@ -78,3 +78,13 @@
 - สรุปสถานะตาม RTM: ครบ = 5, ยังไม่ถึง = 6, รอ Q-xx = 1, ช่องโหว่ = 2
 - ข้อค้นพบใหม่: F-01, F-02, F-03
 - หมายเหตุ: RTM ถูกสร้างใน [specs/001-booking/rtm.md]( /workspaces/670710720-swreqspec/specs/001-booking/rtm.md ) โดยไม่แก้โค้ดหรือ test
+
+---
+
+## 2026-10-07 08:54 คำสั่ง: /verify specs/001-booking/
+
+- โหมด: ตรวจและรายงาน requirement (รวม test หน้าจอ AC-BKG-03)
+- ผล test: `cd backend && pytest -q` -> 5 passed, 1 skipped; `cd frontend && npm test -- --run` -> 2 passed, 1 failed
+- สรุปสถานะตาม RTM: ครบ = 4, ยังไม่ถึง = 5, รอ Q-xx = 1, ช่องโหว่ = 3
+- ข้อค้นพบใหม่: F-04
+- หมายเหตุ: ข้อค้นพบที่เกี่ยวกับ AC-BKG-03 เกิดจากข้อความแจ้งเตือนและจำนวนตัวเลือกไม่ตรงกับ Then ของ AC ดังที่ Frontend test แสดง
