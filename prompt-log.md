@@ -66,3 +66,15 @@
   - 2 passed
   - 1 skipped
   - เหตุผลที่ skip: TC-BKG-01-3 ยังไม่มีผลลัพธ์ชัดเจนใน spec สำหรับกรณียืนยันซ้ำในเวลาเดียวกัน จึงไม่เขียน assert และคงไว้เป็นงานรอความชัดเจนจากทีม
+
+---
+
+## 2026-10-07 08:31 คำสั่ง: /verify specs/001-booking/
+
+- โหมด: ตรวจและรายงาน requirement
+- ผล test: `cd backend && pytest -q`
+  - 5 passed
+  - 1 skipped
+- สรุปสถานะตาม RTM: ครบ = 5, ยังไม่ถึง = 6, รอ Q-xx = 1, ช่องโหว่ = 2
+- ข้อค้นพบใหม่: F-01, F-02, F-03
+- หมายเหตุ: RTM ถูกสร้างใน [specs/001-booking/rtm.md]( /workspaces/670710720-swreqspec/specs/001-booking/rtm.md ) โดยไม่แก้โค้ดหรือ test
